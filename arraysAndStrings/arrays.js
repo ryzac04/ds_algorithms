@@ -106,6 +106,140 @@ class Solution {
     }
 }
 
+// Top K Elements in List
+
+// Given an integer array nums and an integer k, return the k most frequent elements within the array.
+
+// The test cases are generated such that the answer is always unique.
+
+// You may return the output in any order.
+
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
+
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @param {number} k
+     * @return {number[]}
+     */
+    topKFrequent(nums, k) {
+        const count = {};
+        const freq = Array.from({ length: nums.length + 1 }, () => []);
+
+        for (const n of nums) {
+            count[n] = (count[n] || 0) + 1;
+        }
+        for (const n in count) {
+            freq[count[n]].push(parseInt(n));
+        }
+
+        const res = [];
+        for (let i = freq.length - 1; i > 0; i--) {
+            for (const n of freq[i]) {
+                res.push(n);
+                if (res.length === k) {
+                    return res;
+                }
+            }
+        }
+    }
+}
+
+// Products of Array Discluding Self
+
+// Given an integer array nums, return an array output where output[i] is the product of all the elements of nums except nums[i].
+
+// Each product is guaranteed to fit in a 32-bit integer.
+
+// Follow-up: Could you solve it in O(n) time without using the division operation?
+
+// Input: nums = [1,2,4,6]
+
+// Output: [48,24,12,8]
+
+// Input: nums = [-1,0,1,2,3]
+
+// Output: [0,-6,0,0,0]
+
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
+
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @return {number[]}
+     */
+    productExceptSelf(nums) {
+        let res = []; 
+        let prefix = 1; 
+        let postfix = 1; 
+
+        for(let i = 0; i < nums.length; i++){
+            res[i] = prefix; 
+            prefix *= nums[i]; 
+        }
+        for(let i = nums.length - 2; i >= 0; i--){
+            postfix *= nums[i + 1];
+            res[i] *= postfix; 
+        }
+        return res; 
+    }
+}  
+
+// Valid Sudoku
+
+// You are given a a 9 x 9 Sudoku board board. A Sudoku board is valid if the following rules are followed:
+
+// Each row must contain the digits 1-9 without duplicates.
+// Each column must contain the digits 1-9 without duplicates.
+// Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without duplicates.
+// Return true if the Sudoku board is valid, otherwise return false
+
+// Note: A board does not need to be full or be solvable to be valid.
+
+    // Space Complexity: O(1); O(9 ** e)
+    // Time Complexity: O(1); 
+
+class Solution {
+    /**
+     * @param {character[][]} board
+     * @return {boolean}
+     */
+    isValidSudoku(board) {
+        const cols = new Map();
+        const rows = new Map();
+        const squares = new Map(); // key = (r / 3) * 3 + c / 3
+
+        for (let r = 0; r < 9; r++) {
+            for (let c = 0; c < 9; c++) {
+                const cell = board[r][c];
+                if (cell === '.') {
+                    continue;
+                }
+                if (
+                    rows.get(r)?.has(cell) ||
+                    cols.get(c)?.has(cell) ||
+                    squares
+                        .get(Math.floor(r / 3) * 3 + Math.floor(c / 3))
+                        ?.has(cell)
+                ) {
+                    return false;
+                }
+                cols.set(c, new Set(cols.get(c)).add(cell));
+                rows.set(r, new Set(rows.get(r)).add(cell));
+                squares.set(
+                    Math.floor(r / 3) * 3 + Math.floor(c / 3),
+                    new Set(
+                        squares.get(Math.floor(r / 3) * 3 + Math.floor(c / 3)),
+                    ).add(cell),
+                );
+            }
+        }
+        return true;
+    }
+}
+
 //////////////////////////////TWO POINTERS//////////////////////////////////////////////
 
 // Two Interger Sum II
@@ -147,7 +281,13 @@ class Solution {
 // The output should not contain any duplicate triplets. You may return the output and the triplets in any order.
 
     // Time Complexity: O(n^2)
-    // Space Complexity: O(1)
+        // Sorting Array: nums.sort((a, b) => a - b) takes O(n log n) where n is the length of the input array
+        // Main Loop: O(n) for length of the nums array
+        // Two-Pointer Search: O(n^2) for each iteration of the outer loop, the inner loop runs in linear time O(n). Since the two-pointer search runs O(n) times inside the O(n) times outer loop, the total time complexity is O(n^2)
+        // O(n^2) + O(n log n) = O(n^2)
+    // Space Complexity: 
+        // Aux space ignoring output storage is O(1)
+        // O(k)(including the output storage, where k <= O(n ^ 2) in the worst case for number of triplets stored in the result)
     
 function threeSum(nums) {
     let results = [];
@@ -181,6 +321,43 @@ function threeSum(nums) {
     }
     
     return results;
+}
+
+// Max Water Container
+
+// You are given an integer array heights where heights[i] represents the height of the 
+// i^th bar.
+
+// You may choose any two bars to form a container. Return the maximum amount of water a container can store.
+
+    // Time Complexity: O(n); 
+    // Space Complexity: O(1)
+
+class Solution {
+    /**
+     * @param {number[]} heights
+     * @return {number}
+     */
+    maxArea(heights) {
+        let l = 0;
+        let r = heights.length - 1; 
+        let maxWater = 0; 
+
+        while(l < r){
+            const width = r - l;
+            const height = Math.min(heights[l], heights[r]);
+            const area = width * height; 
+
+            maxWater = Math.max(maxWater, area); 
+
+            if(heights[l] < heights[r]){
+                l++; 
+            }else{
+                r--; 
+            }
+        }
+        return maxWater; 
+    }
 }
 
 //////////////////////////////SLIDING WINDOW//////////////////////////////////////////////

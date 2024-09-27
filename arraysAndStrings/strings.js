@@ -87,43 +87,47 @@ class Solution {
     }
 }
 
-// Top K Elements in List
+// String Encode and Decode
 
-// Given an integer array nums and an integer k, return the k most frequent elements within the array.
+// Design an algorithm to encode a list of strings to a single string. The encoded string is then decoded back to the original list of strings.
 
-// The test cases are generated such that the answer is always unique.
+// Please implement encode and decode
 
-// You may return the output in any order.
-
-    // Time Complexity: O(n)
-    // Space Complexity: O(n)
-
+    // Time Complexity: O(n) for the total number of characters in the list of words
+    // Space Complexity: O(n) 
+    
 class Solution {
     /**
-     * @param {number[]} nums
-     * @param {number} k
-     * @return {number[]}
+     * @param {string[]} strs
+     * @returns {string}
      */
-    topKFrequent(nums, k) {
-        const count = {};
-        const freq = Array.from({ length: nums.length + 1 }, () => []);
-
-        for (const n of nums) {
-            count[n] = (count[n] || 0) + 1;
+    encode(strs) {
+        let res = ""; 
+        for(let s of strs){
+            res += `${s.length}#${s}`; 
         }
-        for (const n in count) {
-            freq[count[n]].push(parseInt(n));
-        }
+        return res; 
+    }
 
-        const res = [];
-        for (let i = freq.length - 1; i > 0; i--) {
-            for (const n of freq[i]) {
-                res.push(n);
-                if (res.length === k) {
-                    return res;
-                }
+    /**
+     * @param {string} str
+     * @returns {string[]}
+     */
+    decode(str) {
+        let res = []; 
+        let i = 0; 
+        while(i < str.length){
+            let j = i; 
+            while(str[j] !== "#"){
+                j++; 
             }
+            let length = parseInt(str.substring(i, j), 10); 
+            i = j + 1; 
+            j = i + length; 
+            res.push(str.substring(i, j)); 
+            i = j; 
         }
+        return res; 
     }
 }
 
