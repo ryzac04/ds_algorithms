@@ -301,15 +301,14 @@ function threeSum(nums) {
         let right = nums.length - 1;
 
         while (left < right) {
+            // Skip duplicates for the second and third elements
+            while (left < right && nums[left] === nums[left + 1]) left++;
+            while (left < right && nums[right] === nums[right - 1]) right--;
+
             let sum = nums[i] + nums[left] + nums[right];
 
             if (sum === 0) {
                 results.push([nums[i], nums[left], nums[right]]);
-                
-                // Skip duplicates for the second and third elements
-                while (left < right && nums[left] === nums[left + 1]) left++;
-                while (left < right && nums[right] === nums[right - 1]) right--;
-                
                 left++;
                 right--;
             } else if (sum < 0) {
@@ -357,6 +356,45 @@ class Solution {
             }
         }
         return maxWater; 
+    }
+}
+
+// Trapping Rain Water
+
+// You are given an array non-negative integers heights which represent an elevation map. Each value heights[i] represents the height of a bar, which has a width of 1.
+
+// Return the maximum area of water that can be trapped between the bars.
+
+    // Time Complexity: O(n) 
+    // Space Complexity: O(1)
+
+class Solution {
+    /**
+     * @param {number[]} height
+     * @return {number}
+     */
+    trap(height) {
+        if (!height || height.length === 0) {
+            return 0;
+        }
+
+        let l = 0;
+        let r = height.length - 1;
+        let leftMax = height[l];
+        let rightMax = height[r];
+        let res = 0;
+        while (l < r) {
+            if (leftMax < rightMax) {
+                l++;
+                leftMax = Math.max(leftMax, height[l]);
+                res += leftMax - height[l];
+            } else {
+                r--;
+                rightMax = Math.max(rightMax, height[r]);
+                res += rightMax - height[r];
+            }
+        }
+        return res;
     }
 }
 
