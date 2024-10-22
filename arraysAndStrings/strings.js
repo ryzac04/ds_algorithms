@@ -164,38 +164,6 @@ function diffIsPalindrome(s) {
     return true;
 }
 
-//////////////////////////////SLIDING WINDOW////////////////////////////////////////////
-
-// Longest Substring w/out Duplicates
-// Given a string s, find the length of the longest substring without duplicate characters.
-
-// A substring is a contiguous sequence of characters within a string.
-
-    // Time Complexity: O(n)
-    // Space Complexity: O(n)
-    
-class Solution {
-    /**
-     * @param {string} s
-     * @return {number}
-     */
-    lengthOfLongestSubstring(s) {
-        const charSet = new Set();
-        let l = 0;
-        let res = 0;
-
-        for (let r = 0; r < s.length; r++) {
-            while (charSet.has(s[r])) {
-                charSet.delete(s[l]);
-                l++;
-            }
-            charSet.add(s[r]);
-            res = Math.max(res, r - l + 1);
-        }
-        return res;
-    }
-}
-
 // Reverse a String  
     // Time Complexity: O(n)
     // Space Complexity: O(n) 
