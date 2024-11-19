@@ -1,6 +1,4 @@
 
-//////////////////////////////HASHING///////////////////////////////////////
-
 // Is Anagram 
 // Given two strings s and t, return true if the two strings are anagrams of each other, otherwise return false.
 
@@ -131,60 +129,84 @@ class Solution {
     }
 }
 
-//////////////////////////////TWO POINTERS//////////////////////////////////////////////
-
-// Is Palindrome: determine if a given string is a palindrome.
-// Given a string s, return true if it is a palindrome, otherwise return false.
-
-// A palindrome is a string that reads the same forward and backward. It is also case-insensitive and ignores all non-alphanumeric characters.
-
-    // Time Complexity: O(n) for length of str in cleanStr and methods in reversedStr
-    // Space Complexity: O(n) for space to store cleanStr and reversedStr
-
-function isPalindrome(str) {
-    const cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
-    const reversedStr = cleanStr.split('').reverse('').join('');
-    return cleanStr === reversedStr;
-}
-
-    // Time Complexity: O(n) for length of s
-    // Space Complexity: O(n) for cleanS storage
-    // Two Pointers
-    
-function diffIsPalindrome(s) {
-    const cleanS = s.toLowerCase().replace(/[^a-z0-9]/g, "");
-    let l = 0;
-    let r = cleanS.length - 1;
-
-    while(l <= r){
-        if (cleanS[l] !== cleanS[r]) return false;
-        l++;
-        r--;
-    };
-    return true;
-}
-
-// Reverse a String  
-    // Time Complexity: O(n)
-    // Space Complexity: O(n) 
-
-function reverseString(str) {
-    return str.split('').reverse('').join('').toLowerCase();
-}
-
-console.log(reverseString('Hello'));
-console.log(reverseString('Racecar'));
+// Is Unique (CTCI Ch 1 pg 90, 1.1)
+// Determine if a string has all unique characters. 
 
     // Time Complexity: O(n)
     // Space Complexity: O(n)
 
-function stringReverse(str) {
-    let newStr = "";
-    for (let i = str.length - 1; i >= 0; i--){
-        newStr += str[i];
+function isUnique(str) {
+    if (str.length > 128) return false; // Assuming ASCII characters
+    const charSet = new Set();
+    for (let char of str) {
+        if (charSet.has(char)) return false;
+        charSet.add(char);
     }
-    return newStr.toLowerCase();
+    return true;
 }
 
-console.log(stringReverse('Hello'));
-console.log(stringReverse('Racecar'));
+// Check Permutation (CTCI Ch 1 pg 90, 1.2)
+// Check if one string is a permutation of the other. 
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
+
+function checkPermutation(str1, str2) {
+    if (str1.length !== str2.length) return false;
+
+    // Create a frequency map for str1
+    const charCount = {};
+
+    // Count each character in str1
+    for (let char of str1) {
+        charCount[char] = (charCount[char] || 0) + 1;
+    }
+
+    // Decrease the count for each character in str2
+    for (let char of str2) {
+        if (!charCount[char]) {
+            return false; // Character mismatch or excess in str2
+        }
+        charCount[char]--;
+    }
+
+    // If all counts are zero, the strings are permutations
+    return true;
+}
+
+// Palindrome Permutation (CTCI ch 1 pg 91, 1.4)
+// Check if a string can be rearranged into a palindrome. 
+    // Time Complexity: O(n)
+    // Space Complexity: O(1) - constant space for ASCII
+
+function palindromePermutation(str) {
+    const charCounts = {};
+    for (let char of str.replace(/\s+/g, '').toLowerCase()) {
+        charCounts[char] = (charCounts[char] || 0) + 1;
+    }
+    let oddCount = 0;
+    for (let count of Object.values(charCounts)) {
+        if (count % 2 !== 0) oddCount++;
+        if (oddCount > 1) return false;
+    }
+    return true;
+}
+
+// Zero Matrix (CTCI Ch. 1 pg 91, 1.8)
+// Set rows and columns to 0 if an element is 0. 
+    // Time Complexity: O(m * n)
+    // Space Complexity: O(m + n)
+
+function zeroMatrix(matrix) {
+    const rows = new Set(), cols = new Set();
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[0].length; j++) {
+            if (matrix[i][j] === 0) {
+                rows.add(i);
+                cols.add(j);
+            }
+        }
+    }
+    for (let i of rows) matrix[i].fill(0);
+    for (let j of cols) for (let i = 0; i < matrix.length; i++) matrix[i][j] = 0;
+    return matrix;
+}

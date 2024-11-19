@@ -181,9 +181,17 @@
 * Sliding Window:
   * Description: maintaining a "window" of elements in the array that moves from one end to the other to solve problems efficiently
   * Common Use: finding subarrays  with a specific sum, finding the max/min element in a subarray, or solving fixed-size window problems 
-* Prefix Sum:
-  * Description: precomputing the sum of elements up to each index to solve sum-related problems efficiently
-  * Common Use: solving range sum queries, or subarray sum problems in constant time after preprocessing 
+* Precomputations: 
+  * Description: precomputing intermediate results (e.g., sums, products, or any cumulative property) to answer queries or solve problems efficiently.
+  * Common Use:
+    * Problems involving cumulative sums (Prefix Sum) or products (Prefix and Postfix Products).
+    * Problems requiring multiple queries on ranges or elements.
+    * Scenarios where preprocessing saves redundant computation
+  * Sub-categories: 
+    * Prefix Sum:
+      * Description: precomputing the sum of elements up to each index to solve sum-related problems efficiently
+      * Common Use: solving range sum queries, or subarray sum problems in constant time after preprocessing.
+    * Prefix and Postfix Products
 * Binary Search: 
   * Description: efficient search in sorted arrays by dividing the array in half with each step
   * Common Use: finding an element, searching for boundaries, or solving optimization problems 

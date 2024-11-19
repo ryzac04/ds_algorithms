@@ -197,3 +197,21 @@ console.log(people);
 const words = ['banana', 'apple', 'kiwi', 'cherry', 'date'];
 words.sort((a, b) => a.length - b.length);
 console.log(words); // Output: ['kiwi', 'date', 'apple', 'banana', 'cherry']
+
+// Is Unique - No Data Structure (CTCI Ch 1 pg 90, 1.1 part 2)
+// Determine if a string has all unique characters - do not use a data structure. 
+    // Time Complexity: O(n log n) where n is the length of the array and log n for the sorting step
+    // Space Complexity: O(1) d/t in-place sorting through JS's .sort() method 
+
+function isUniqueNoDataStructure(str) {
+    // Convert the string to an array of characters, sort it, and join back to a string
+    const sortedStr = str.split('').sort().join(''); 
+
+    // Check for consecutive identical characters
+    for (let i = 0; i < sortedStr.length - 1; i++){
+        if (sortedStr[i] === sortedStr[i + 1]) {
+            return false; // Found a duplicate
+        }
+    }
+    return true; // No duplicates found 
+}
