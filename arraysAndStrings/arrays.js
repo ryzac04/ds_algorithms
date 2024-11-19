@@ -25,6 +25,23 @@ class Solution {
     }
 }
 
+// Contains Duplicate, Return Boolean, No Additional Data Structure
+    // Time Complexity: O(n log n) where n is the length of the array and log n for the sorting step
+    // Space Complexity: O(1) d/t in-place sorting through JS's .sort() method 
+
+function hasDuplicateNoDataStructure(str) {
+    // Convert the string to an array of characters, sort it, and join back to a string
+    const sortedStr = str.split('').sort().join(''); 
+
+    // Check for consecutive identical characters
+    for (let i = 0; i < sortedStr.length - 1; i++){
+        if (sortedStr[i] === sortedStr[i + 1]) {
+            return false; // Found a duplicate
+        }
+    }
+    return true; // No duplicates found 
+}
+
 // Two Sum 
 // Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
 
