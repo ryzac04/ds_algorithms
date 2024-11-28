@@ -5,8 +5,10 @@
 // An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
 
     // Time Complexity: O(s + t) - for length of s and t
-    // Space Complexity: O(s + t) - for space of each hash map 
-    // 2 Hash Maps compared 
+    // Space Complexity: O(s + t) - for space of each hash map
+    
+// Source: neetcode.io
+
 class Solution {
     /**
      * @param {string} s
@@ -40,6 +42,8 @@ class Solution {
 
     // Time Complexity: O(n) - for length of nums
     // Space Complexity: O(n) - d/t use of hash map DS (Map in JS)
+
+// Source: neetcode.io
 
 class Solution {
     /**
@@ -96,6 +100,8 @@ const diffTwoSum = (array, goal) => {
         // Character Frequency Count Array: O(1) d/t O(26) - fixed size for each letter of the alphabet
         // Key Strings: O(1) d/t O(26) - fixed d/t fixed size of Character Frequency Count Array
 
+// Source: neetcode.io
+
 class Solution {
     /**
      * @param {string[]} strs - Array of input strings
@@ -148,6 +154,8 @@ class Solution {
     // Time Complexity: O(n)
     // Space Complexity: O(n)
 
+// Source: neetcode.io
+
 class Solution {
     /**
      * @param {number[]} nums
@@ -179,7 +187,7 @@ class Solution {
 
 // Valid Sudoku
 
-// You are given a a 9 x 9 Sudoku board board. A Sudoku board is valid if the following rules are followed:
+// You are given a 9 x 9 Sudoku board board. A Sudoku board is valid if the following rules are followed:
 
 // Each row must contain the digits 1-9 without duplicates.
 // Each column must contain the digits 1-9 without duplicates.
@@ -189,7 +197,9 @@ class Solution {
 // Note: A board does not need to be full or be solvable to be valid.
 
     // Space Complexity: O(1); O(9 ** e)
-    // Time Complexity: O(1); 
+    // Time Complexity: O(1);
+
+// Source: neetcode.io
 
 class Solution {
     /**
@@ -230,27 +240,12 @@ class Solution {
     }
 }
 
-
-// Is Unique (CTCI Ch 1 pg 90, 1.1)
-// Determine if a string has all unique characters. 
-
-    // Time Complexity: O(n)
-    // Space Complexity: O(n)
-
-function isUnique(str) {
-    if (str.length > 128) return false; // Assuming ASCII characters
-    const charSet = new Set();
-    for (let char of str) {
-        if (charSet.has(char)) return false;
-        charSet.add(char);
-    }
-    return true;
-}
-
-// Check Permutation (CTCI Ch 1 pg 90, 1.2)
+// Check Permutation 
 // Check if one string is a permutation of the other. 
     // Time Complexity: O(n)
     // Space Complexity: O(n)
+
+// Source: Cracking the Coding Interview, 6th ed. - Ch1, pg 90, problem 1.2
 
 function checkPermutation(str1, str2) {
     if (str1.length !== str2.length) return false;
@@ -275,10 +270,12 @@ function checkPermutation(str1, str2) {
     return true;
 }
 
-// Palindrome Permutation (CTCI ch 1 pg 91, 1.4)
+// Palindrome Permutation
 // Check if a string can be rearranged into a palindrome. 
     // Time Complexity: O(n)
     // Space Complexity: O(1) - constant space for ASCII
+
+// Source: Cracking the Coding Interview, 6th ed. - Ch1, pg 91, problem 1.4
 
 function palindromePermutation(str) {
     const charCounts = {};
@@ -291,24 +288,4 @@ function palindromePermutation(str) {
         if (oddCount > 1) return false;
     }
     return true;
-}
-
-// Zero Matrix (CTCI Ch. 1 pg 91, 1.8)
-// Set rows and columns to 0 if an element is 0. 
-    // Time Complexity: O(m * n)
-    // Space Complexity: O(m + n)
-
-function zeroMatrix(matrix) {
-    const rows = new Set(), cols = new Set();
-    for (let i = 0; i < matrix.length; i++) {
-        for (let j = 0; j < matrix[0].length; j++) {
-            if (matrix[i][j] === 0) {
-                rows.add(i);
-                cols.add(j);
-            }
-        }
-    }
-    for (let i of rows) matrix[i].fill(0);
-    for (let j of cols) for (let i = 0; i < matrix.length; i++) matrix[i][j] = 0;
-    return matrix;
 }

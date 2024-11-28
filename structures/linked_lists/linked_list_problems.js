@@ -5,6 +5,8 @@
     // Space Complexity: O(1) d/t use of pointers - no data structure
     // Pointers
 
+// Source: neetcode
+
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -36,6 +38,11 @@ class Solution{
 
 // The new list should be made up of nodes from list1 and list2.
 
+    // Space Complexity: O(n + m) for the length of each list - linear 
+    // Time Complexity: O(1) b/c it remains constant d/t size of m + n, there is no additional space used. 
+
+// Source: neetcode
+
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -52,10 +59,6 @@ class Solution {
      * @param {ListNode} list2
      * @return {ListNode}
      */
-
-    // Space Complexity: O(n + m) for the length of each list - linear 
-    // Time Complexity: O(1) b/c it remains constant d/t size of m + n, there is no additional space used. 
-    // 
     
     mergeTwoLists(list1, list2) {
         let dummy = {val: 0, next: null}
@@ -91,8 +94,10 @@ class Solution {
 
     // Time Complexity: O(n)
     // Space Complexity: O(1)
-    // Two pointers 
-    
+    // Two pointers
+
+// Source: neetcode 
+
 /**
  * Definition for singly-linked list.
  * class ListNode {

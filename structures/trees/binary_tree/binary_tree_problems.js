@@ -3,7 +3,9 @@
 // You are given the root of a binary tree root. Invert the binary tree and return its root.
 
     // Time Complexity: O(n)
-    // Space Complexity: O(h) for height of tree. For unbalanced tree, O(h). For balanced   tree, O(log n). 
+    // Space Complexity: O(h) for height of tree. For unbalanced tree, O(h). For balanced   tree, O(log n).
+
+// Source: neetcode 
 
 /**
  * Definition for a binary tree node.
@@ -37,6 +39,8 @@ class Solution {
 // Given the root of a binary tree, return its depth.
 
 // The depth of a binary tree is defined as the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+// Source: neetcode 
 
 /**
  * Definition for a binary tree node.
@@ -132,8 +136,10 @@ class Solution {
 // Given the root of a binary tree root, return the diameter of the tree.
 
     // Time Complexity: O(n)
-    // Space Complexity: O(n) if unbalanced or O(log n) for balanced 
-    
+    // Space Complexity: O(n) if unbalanced or O(log n) for balanced
+
+// Source: neetcode 
+
 /**
  * Definition for a binary tree node.
  * class TreeNode {
@@ -174,8 +180,10 @@ class Solution {
 
 // A height-balanced binary tree is defined as a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
 
-// Time Complexity: O(n)
-// Space Complexity: O(n)
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
+
+// Source: neetcode
 
 /**
  * Definition for a binary tree node.
@@ -225,10 +233,12 @@ class Solution {
 
 // Two binary trees are considered equivalent if they share the exact same structure and the nodes have the same values.
 
-// Time Complexity: O(p + q)
-// Space Complexity: O(h) where h is the height of the tree.
-// Worst case (completely unbalanced tree), h is O(n).
-// Best case (completely balanced trees), h is O(log n).
+    // Time Complexity: O(p + q)
+    // Space Complexity: O(h) where h is the height of the tree.
+    // Worst case (completely unbalanced tree), h is O(n).
+    // Best case (completely balanced trees), h is O(log n).
+
+// Source: neetcode 
 
 /**
  * Definition for a binary tree node.
@@ -264,10 +274,12 @@ class Solution {
 
 // A subtree of a binary tree tree is a tree that consists of a node in tree and all of this node's descendants. The tree tree could also be considered as a subtree of itself.
 
-// Time Complexity: O(n*m) where n is the number of nodes in the root tree and m is the number of nodes in the subRoot tree. 
-// Space Complexity: O(h) where h is the height of the tree.
-// Worst case (completely unbalanced tree), h is O(n).
-// Best case (completely balanced trees), h is O(log n).
+    // Time Complexity: O(n*m) where n is the number of nodes in the root tree and m is the number of nodes in the subRoot tree.
+    // Space Complexity: O(h) where h is the height of the tree.
+    // Worst case (completely unbalanced tree), h is O(n).
+    // Best case (completely balanced trees), h is O(log n).
+
+// Source: neetcode 
 
 /**
  * Definition for a binary tree node.

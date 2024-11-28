@@ -7,8 +7,9 @@
 // Your solution must run in O(logn) time.
 
     // Time Complexity: O(log n)
-    // Space Complexity: 
-    // Sorted Array w/ Binary Search 
+    // Space Complexity:
+
+// Source: neetcode 
 
 class Solution {
     /**

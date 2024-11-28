@@ -10,8 +10,10 @@
 // Return true if s is a valid string, and false otherwise.
 
     // Space Complexity: O(n) for length of s
-    // Time Complexity: O(n) for length of the stack. Hash map is O(1) b/c it is fixed 
-    // Stack and Hash Map 
+    // Time Complexity: O(n) for length of the stack. Hash map is O(1) b/c it is fixed
+    // Stack and Hash Map
+
+// Source: neetcode 
 
 class Solution {
     /**
@@ -50,6 +52,8 @@ class Solution {
 
     // Space Complexity: O(n) for length of the stack
     // Time Complexity: O(1)
+
+// Source: neetcode 
 
 class MinStack {
     constructor() {
@@ -105,9 +109,11 @@ class MinStack {
 // The operators include '+', '-', '*', and '/'.
 // Assume that division between integers always truncates toward zero.
 
-    // Space Complexity: O(n) for the number of tokens 
+    // Space Complexity: O(n) for the number of tokens
     // Time Complexity: O(n)
-    
+
+// Source: neetcode 
+
 class Solution {
     /**
      * @param {string[]} tokens
@@ -150,6 +156,8 @@ class Solution {
 // only add closing parentheses if closed < open
 // valid if open === closed === n
 
+// Source: neetcode 
+
 class Solution {
     /**
      * @param {number} n
@@ -190,8 +198,10 @@ class Solution {
 
 // Return an array result where result[i] is the number of days after the ith day before a warmer temperature appears on a future day. If there is no day in the future where a warmer temperature will appear for the ith day, set result[i] to 0 instead.
 
-// Space Complexity: O(n) 
-// Time Complexity: O(n)
+    // Space Complexity: O(n)
+    // Time Complexity: O(n)
+
+// Source: neetcode 
 
 class Solution {
     /**
@@ -253,8 +263,10 @@ function dailyTemperatures(temperatures) {
 
 // Return the number of different car fleets that will arrive at the destination.
 
-// Space Complexity: O(n)
-// Time Complexity: O(n log n)
+    // Space Complexity: O(n)
+    // Time Complexity: O(n log n)
+
+// Source: neetcode 
 
 function carFleet(target, position, speed) {
     const n = position.length;
@@ -319,8 +331,10 @@ class Solution {
 
 // Note: This chart is known as a histogram.
 
-// Space Complexity: O(n) - in the worst case, the stack contain all the indices of the bars, which means the space complexity is also linear. 
-// Time Complexity: O(n) - each bar is pushed and popped from the stack at most once, so the time complexity is linear in the number of bars. 
+    // Space Complexity: O(n) - in the worst case, the stack contain all the indices of the bars, which means the space complexity is also linear.
+    // Time Complexity: O(n) - each bar is pushed and popped from the stack at most once, so the time complexity is linear in the number of bars.
+
+// Source: neetcode
 
 class Solution {
     /**

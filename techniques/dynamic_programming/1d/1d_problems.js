@@ -4,9 +4,11 @@
 
 // Return the number of distinct ways to climb to the top of the staircase.
 
-// Time Complexity: O(n)
-// Space Complexity: O(1)
-// Two pointers
+    // Time Complexity: O(n)
+    // Space Complexity: O(1)
+    // Two pointers
+
+// Source: neetcode
 
 function climbStairs(n) {
     if (n <= 1) return 1;
@@ -33,8 +35,10 @@ console.log(climbStairs(5)); // Output: 8
 
 // Return the minimum cost to reach the top of the staircase, i.e. just past the last index in cost.
 
-// Time Complexity: O(n)
-// Space Complexity: O(1)
+    // Time Complexity: O(n)
+    // Space Complexity: O(1)
+
+// Source: neetcode 
 
 function minCostClimbingStairs(cost) {
     const n = cost.length;
@@ -54,4 +58,34 @@ function minCostClimbingStairs(cost) {
 
     // The answer is the minimum cost to reach the top (just past the last step)
     return prev1;
+}
+
+// Maximum Subarray (Kadane's Algorithm)
+// Given an array of integers nums, find the subarray with the largest sum and return the sum.
+
+// A subarray is a contiguous non-empty sequence of elements within an array.
+
+    // Time Complexity: O(n)
+    // Space Complexity: O(1)
+
+// Source: neetcode.io
+
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @return {number}
+     */
+    maxSubArray(nums) {
+        if (nums.length === 0) return 0;
+
+        let currentSum = nums[0];
+        let maxSum = nums[0];
+
+        for (let i = 1; i < nums.length; i++) {
+            currentSum = Math.max(nums[i], currentSum + nums[i]);
+            maxSum = Math.max(maxSum, currentSum);
+        }
+
+        return maxSum;
+    }
 }

@@ -6,10 +6,11 @@
 
 // Return the maximum profit you can achieve. You may choose to not make any transactions, in which case the profit would be 0.
 
-    // Time Complexity: O(n) for length of prices array 
-    // Space Complexity: O(1) d/t use of two pointers - no data structure 
-    // Two Pointers
+    // Time Complexity: O(n) for length of prices array
+    // Space Complexity: O(1) d/t use of two pointers - no data structure
     
+// Source: neetcode 
+
 class Solution {
     /**
      * @param {number} prices
@@ -57,6 +58,8 @@ class Solution {
     // Time Complexity: O(n)
     // Space Complexity: O(n)
     
+// Source: neetcode 
+
 class Solution {
     /**
      * @param {string} s
@@ -86,7 +89,9 @@ class Solution {
 
     // Time Complexity: O(n)
     // Space Complexity: O(m)
-    // Where n is the length of the string and m is the total number of unique characters in the string. 
+    // Where n is the length of the string and m is the total number of unique characters in the string.
+
+// Source: neetcode 
 
 class Solution {
     /**
@@ -125,6 +130,8 @@ class Solution {
 
     // Time Complexity: O(n)
     // Space Complexity: O(1)
+
+// Source: neetcode 
 
 class Solution {
     /**
@@ -180,26 +187,4 @@ class Solution {
         }
         return matches === 26;
     }
-}
-
-// URLify (CTCI Ch. 1 pg 90, 1.3)
-// Replace spaces with '%20'.
-
-    // Time Complexity: O(n)
-    // Space Complexity: O(n)
-
-function URLify(str, length) {
-    // Use the "true length" of the string
-    const trimmedStr = str.slice(0, length);
-    return trimmedStr.replace(/\s/g, '%20');
-}
-
-// String Rotation (CTCI Ch. 1 pg 91, 1.9)
-// Check if one string is a rotation of another. 
-    // Time Complexity: O(n)
-    // Space Complexity: O(n)
-    
-function isRotation(s1, s2) {
-    if (s1.length !== s2.length) return false;
-    return (s1 + s1).includes(s2);
 }
