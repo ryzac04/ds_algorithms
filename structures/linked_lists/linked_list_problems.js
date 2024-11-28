@@ -1,5 +1,6 @@
 
-// Reverse a singly-linked list (iteratively):
+// Reverse Singly-linked List
+// Given the beginning of a singly linked list head, reverse the list, and return the new beginning ofthe list. 
 
     // Time Complexity: O(n) for length of linked list
     // Space Complexity: O(1) d/t use of pointers - no data structure
@@ -19,15 +20,15 @@
 
 class Solution{
     reverseList(head) {
-        let [prev, curr, next] = [null, head, null];
+        let [prev, curr] = [null, head];
         while (curr) {
-            next = curr.next; //save the next node in temporary variable
-            curr.next = prev; //reverse current node's pointer 
+            let temp = curr.next; // save the next node in temporary variable
+            curr.next = prev; // reverse current node's pointer 
 
-            prev = curr; //move prev and curr one step forward 
-            curr = next;
+            prev = curr; // move prev and curr one step forward 
+            curr = temp;
         }
-        return prev; //return new head 
+        return prev; // return new head 
     }
 }
 
@@ -61,7 +62,7 @@ class Solution {
      */
     
     mergeTwoLists(list1, list2) {
-        let dummy = {val: 0, next: null}
+        let dummy = new ListNode(); 
         let current = dummy;
 
         while(list1 !== null && list2 !== null){
