@@ -513,9 +513,9 @@ class Solution {
 // The linked lists may intersect at a node, meaning that from that node onwards, both linked lists share the same sequence of nodes.
 // If there is no intersection, return null.
 
-    // Time Complexity: O(n + m) where n and m are the lengths of the two lists.
+// Two Pointers 
     // Space Complexity: O(1) d/t no data structure used
-    // Two Pointers
+    // Time Complexity: O(n + m) where n and m are the lengths of the two lists.
 
 function getIntersectionNode(headA, headB) {
     if (!headA || !headB) return null; 
@@ -529,3 +529,262 @@ function getIntersectionNode(headA, headB) {
     }
     return pointerA; 
 }
+
+// Remove Duplicates 
+// Write code to remove duplicates from an unsorted linked list. 
+
+// Source: Cracking the Coding Interview, 6th ed. - Ch2, pg 94, problem 2.1
+
+// Set Data Structure 
+    // Space Complexity: O(n)
+    // Time Complexity: O(n)
+
+function removeDuplicates(head) {
+    let current = head;
+    let seen = new Set();
+    let prev = null;
+
+    while (current) {
+        if (seen.has(current.value)) {
+            prev.next = current.next;
+        } else {
+            seen.add(current.value);
+            prev = current;
+        }
+        current = current.next;
+    }
+
+    return head;
+}
+
+// Kth to Last
+// Implement an algorithm to find the kth to last element of a singly linked list. 
+
+// Source: Cracking the Coding Interview, 6th ed. - Ch2, pg 94, problem 2.2
+
+// Fast and Slow Two Pointer
+    // Space Complexity: O(1) 
+    // Time Complexity: O(n)
+
+function kthToLast(head, k) {
+    let fast = head;
+    let slow = head;
+
+    // Move fast pointer k steps ahead
+    for (let i = 0; i < k; i++) {
+        if (!fast) return null;
+        fast = fast.next;
+    }
+
+    // Move both pointers until fast reaches the end
+    while (fast) {
+        fast = fast.next;
+        slow = slow.next;
+    }
+
+    return slow;
+}
+
+// Delete Middle Node
+// Implement a function to delete a node in the middle of a singly linked list, given only access to that node. 
+
+// Source: Cracking the Coding Interview, 6th ed. - Ch2, pg 94, problem 2.3
+
+    // Space Complexity: O(1)
+    // Time Complexity: O(1) 
+
+function deleteMiddleNode(node) {
+    if (!node || !node.next) return false;  // Can't delete middle if there's no next node
+    
+    node.value = node.next.value; // Copy the next node's value into the current node
+    node.next = node.next.next;  // Bypass the next node
+    return true;
+}
+
+// Partition
+// Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes greater than or equal to x. 
+
+// Source: Cracking the Coding Interview, 6th ed. - Ch2, pg 94, problem 2.4
+
+    // Space Complexity: O(1)
+    // Time Complexity: O(n) 
+
+function partition(head, x) {
+    let smallerHead = null;
+    let smallerTail = null;
+    let greaterHead = null;
+    let greaterTail = null;
+
+    while (head) {
+        if (head.value < x) {
+            if (!smallerHead) {
+                smallerHead = head;
+                smallerTail = smallerHead;
+            } else {
+                smallerTail.next = head;
+                smallerTail = head;
+            }
+        } else {
+            if (!greaterHead) {
+                greaterHead = head;
+                greaterTail = greaterHead;
+            } else {
+                greaterTail.next = head;
+                greaterTail = head;
+            }
+        }
+        head = head.next;
+    }
+
+    if (smallerTail) smallerTail.next = greaterHead;
+    if (greaterTail) greaterTail.next = null;
+
+    return smallerHead || greaterHead;
+}
+
+// Sum Lists
+// There are two numbers represented by a linked list where each node contains a single digit. The digits are stored in reverse order and we need to add the two numbers and return the sum as a linked list. 
+
+// Source: Cracking the Coding Interview, 6th ed. - Ch2, pg 95, problem 2.5
+
+// Reverse Order
+    // Space Complexity: O(n) result linked list) 
+    // Time Complexity: O(n) 
+
+function sumLists(list1, list2) {
+    let carry = 0;
+    let dummyHead = new ListNode(0);
+    let current = dummyHead;
+    
+    while (list1 || list2 || carry) {
+        let sum = carry;
+        
+        if (list1) {
+            sum += list1.value;
+            list1 = list1.next;
+        }
+        
+        if (list2) {
+            sum += list2.value;
+            list2 = list2.next;
+        }
+        
+        carry = Math.floor(sum / 10);
+        current.next = new ListNode(sum % 10);
+        current = current.next;
+    }
+
+    return dummyHead.next;
+}
+
+// Palindrome
+// Implement a function to check if a linked list is a palindrome. 
+
+// Source: Cracking the Coding Interview, 6th ed. - Ch2, pg 95, problem 2.6
+
+    // Space Complexity: O(1)
+    // Time Complexity: O(n) 
+
+function isPalindrome(head) {
+    let slow = head;
+    let fast = head;
+    
+    // Find the middle of the list
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    
+    // Reverse the second half
+    let prev = null;
+    while (slow) {
+        let next = slow.next;
+        slow.next = prev;
+        prev = slow;
+        slow = next;
+    }
+    
+    // Compare both halves
+    let left = head;
+    let right = prev;
+    while (right) {
+        if (left.value !== right.value) return false;
+        left = left.next;
+        right = right.next;
+    }
+    
+    return true;
+}
+
+// Intersection
+// Given two singly linked lists, determine if the two lists intersect. Return the intersecting node. 
+
+// Source: Cracking the Coding Interview, 6th ed. - Ch2, pg 95, problem 2.7
+
+    // Space Complexity: O(1) 
+    // Time Complexity: O(n + m) where n and m are the lengths of the two lists
+
+    function getIntersectionNode(headA, headB) {
+        let lenA = 0, lenB = 0;
+        let currentA = headA;
+        let currentB = headB;
+        
+        // Get the length of both lists
+        while (currentA) {
+            lenA++;
+            currentA = currentA.next;
+        }
+        
+        while (currentB) {
+            lenB++;
+            currentB = currentB.next;
+        }
+        
+        // Align the pointers to the same distance from the intersection point
+        currentA = headA;
+        currentB = headB;
+        if (lenA > lenB) {
+            for (let i = 0; i < lenA - lenB; i++) currentA = currentA.next;
+        } else {
+            for (let i = 0; i < lenB - lenA; i++) currentB = currentB.next;
+        }
+        
+        // Move both pointers in sync until they find the intersection node
+        while (currentA !== currentB) {
+            currentA = currentA.next;
+            currentB = currentB.next;
+        }
+        
+        return currentA;
+    }
+
+// Loop Detection
+// Given a circular linked list, implement an algorithm that returns the node at the beginning of the loop 
+
+// Source: Cracking the Coding Interview, 6th ed. - Ch2, pg 95, problem 2.8
+
+    // Space Complexity: O(1)
+    // Time Complexity: O(n) 
+
+    function detectLoop(head) {
+        let slow = head;
+        let fast = head;
+        
+        // Detect if a loop exists using Floyd's cycle-finding algorithm
+        while (fast && fast.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+            
+            if (slow === fast) {
+                // There is a loop, now find the entry point
+                let entry = head;
+                while (entry !== slow) {
+                    entry = entry.next;
+                    slow = slow.next;
+                }
+                return entry;
+            }
+        }
+        
+        return null;
+    }
