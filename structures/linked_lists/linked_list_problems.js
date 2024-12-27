@@ -205,7 +205,7 @@ class Solution {
     }
 }
 
-// Two Pointers
+// Two Pointer
     // Space Complexity: O(1)
     // Time Complexity: O(n)
 
