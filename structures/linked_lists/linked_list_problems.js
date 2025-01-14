@@ -123,31 +123,50 @@ class Solution {
      * @return {void}
      */
     reorderList(head) {
-        let slow = head;
-        let fast = head.next;
-        while (fast !== null && fast.next !== null) {
+        // If the list is empty or has only one element, no reordering is needed
+        if (!head || !head.next) return; 
+
+        // Step 1: Find the middle of the linked list
+        let slow = head; // Slow pointer will traverse one step at a time
+        let fast = head; // Fast pointer will traverse two steps at a time 
+
+        // Move slow by 1 and fast by 2 - this will bring fast to the end of the list and slow will now be at the middle position 
+        while (fast && fast.next) {
             slow = slow.next;
             fast = fast.next.next;
         }
 
-        let second = slow.next;
-        let prev = (slow.next = null);
-        while (second !== null) {
-            const tmp = second.next;
-            second.next = prev;
-            prev = second;
-            second = tmp;
+        // Step 2: Reverse the second half of the list 
+        let second = slow.next; // 'second' will point to the second half of the list 
+        slow.next = null; // Split the list into two parts by cutting off the second half from the first half 
+
+        let prev = null; // This will keep track of the previous node as we reverse the second half 
+        let curr = second; // 'curr' is the current node in the second half that we're trying to reverse 
+
+        // Reverse the second half of the list by iterating through it and reversing the next pointers 
+        while (curr) {
+            let temp = curr.next; // Save the next node temporarily, since we're about to modify the 'next' pointer 
+            curr.next = prev; // Reverse the 'next' pointer of the current node 
+            prev = curr; // Move 'prev' to the current node 
+            curr = temp; // Move 'curr' to the next node (which was saved in 'nextTemp')
         }
 
-        let first = head;
-        second = prev;
-        while (second !== null) {
-            const tmp1 = first.next;
-            const tmp2 = second.next;
-            first.next = second;
-            second.next = tmp1;
-            first = tmp1;
-            second = tmp2;
+        // After the loop, 'prev' points to the new head of the reversed second half of the list 
+        second = prev; // Now, 'second' points to the reversed second half of the list 
+
+        // Step 3: Merge the two halves
+        let first = head; // 'first' points to the head of the first half of the list 
+
+        // Merge the two havles by alternating nodes from each half 
+        while (second) {
+            let temp1 = first.next; // Save the next node of the first half temporarily 
+            let temp2 = second.next; // Save the next node of the second half temporarily 
+
+            first.next = second; // Link the current node from the first half to the current node from the second half 
+            second.next = temp1; // Link the current node from the second half to the next node from the first half 
+
+            first = temp1; // Move 'first' to the next node in the first half 
+            second = temp2; // Move 'second' to the next node in the second half 
         }
     }
 }
