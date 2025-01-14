@@ -245,21 +245,29 @@ class Solution {
      * @return {ListNode}
      */
     removeNthFromEnd(head, n) {
+        // Create a dummy node to handle edge cases (e.g., removing the head)
         const dummy = new ListNode(0, head);
+        // Initialize two pointers: 'left' at the dummy node and 'right' at the head of linked list
         let left = dummy;
         let right = head;
 
+        // Move the 'right' pointer n steps forward
         while (n > 0) {
-            right = right.next;
-            n--;
+            right = right.next; // Advance 'right' to the next node 
+            n--; // Decrement the step count
         }
 
+        // Move both 'left' and 'right' pointers until 'right' reaches the end of the linked list
         while (right !== null) {
             left = left.next;
             right = right.next;
         }
 
+        // 'left.next' is now the node to be removed
+        // Skip the node by pointing 'left.next' to 'left.next.next' 
         left.next = left.next.next;
+
+        // Return the new head of the list, which is 'dummy.next'. 
         return dummy.next;
     }
 }
