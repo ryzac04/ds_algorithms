@@ -5,7 +5,7 @@
 // An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
 
     // Time Complexity: O(s + t) - for length of s and t
-    // Space Complexity: O(s + t) - for space of each hash map
+    // Space Complexity: O(1) - there are at most 26 characters 
     
 // Source: neetcode.io
 
