@@ -19,3 +19,25 @@ class Solution:
             countS[s[i]] = 1 + countS.get(s[i], 0)
             countT[t[i]] = 1 + countT.get(t[i], 0)
         return countS == countT
+    
+# Two Sum 
+# Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
+
+# You may assume that every input has exactly one pair of indices i and j that satisfy the condition.
+
+# Return the answer with the smaller index first.
+
+#     Time Complexity: O(n) - for length of nums
+#     Space Complexity: O(n) - d/t use of hash map DS (Map in JS)
+
+# Source: neetcode.io
+
+class Solution:
+    def twoSum(self, nums: int, target: int) -> int:
+        prevMap = {}  # val -> index
+
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[n] = i
