@@ -8,9 +8,9 @@
 
 class Solution:
     def hasDuplicate(nums):
-        seen = set()
+        numsSet = set()
         for num in nums:
-            if num in seen:
+            if num in numsSet:
                 return True
-            seen.add(num)
+            numsSet.add(num)
         return False
