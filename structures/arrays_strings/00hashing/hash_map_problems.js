@@ -196,8 +196,8 @@ class Solution {
 
 // Note: A board does not need to be full or be solvable to be valid.
 
-    // Space Complexity: O(1); O(9 ** e)
-    // Time Complexity: O(1);
+    // Space Complexity: O(n^2);
+    // Time Complexity: O(n^2);
 
 // Source: neetcode.io
 
